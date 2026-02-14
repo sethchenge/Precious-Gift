@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Precious Gift</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <div id="intro-screen">
+        <button class="gift-btn" onclick="openGift()">🎁 Tap to Open Gift</button>
+    </div>
+
+    <div id="main-content">
+        <div class="content-wrapper">
+            
+            <div class="photo-section">
+                <div class="photo-container">
+                    <img src="precious.png" alt="My Precious Love">
+                </div>
+                <h1 class="main-header">Happy Valentine's<br>My Special One</h1>
+            </div>
+
+            <div class="cards-section">
+                
+                <div class="love-card delay-1">
+                    <h3>My Precious</h3>
+                    <p>I love you so much. You are the best in my heart, and the most precious gift God can ever bless me with.</p>
+                </div>
+
+                <div class="love-card verse-card delay-2">
+                    <h3>Song of Solomon 7:6</h3>
+                    <p>"How beautiful you are and how pleasing, my love, with your delights!"</p>
+                </div>
+
+                <div class="love-card delay-3">
+                    <h3>You Are So Special</h3>
+                    <p>Every moment with you is a treasure. Thank you for being my valentine, today and always.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openGift() {
+            const intro = document.getElementById('intro-screen');
+            const main = document.getElementById('main-content');
+            
+            // 1. Fade out intro immediately
+            intro.style.opacity = '0';
+            
+            // 2. Wait just 400ms (Much faster now)
+            setTimeout(() => {
+                intro.style.display = 'none';
+                
+                // Show Main Content
+                main.style.display = 'flex';
+                
+                // Trigger reflow/animation
+                setTimeout(() => {
+                    main.style.opacity = '1';
+                    document.querySelector('.content-wrapper').classList.add('active');
+                }, 50);
+                
+                startRain();
+            }, 400); // Changed from 1000 to 400
+        }
+
+        function startRain() {
+            setInterval(createFallingElement, 200);
+        }
+
+        const emojis = [
+            '🌹', '🌹', '🌹', '🌹', 
+            '❤️', '❤️', '❤️', '❤️', '❤️', '❤️', '❤️', '❤️', 
+            '💘', '💝', '💖', '💗', '💓', '💞', '💕', '💟'  
+        ];
+
+        function createFallingElement() {
+            const element = document.createElement('div');
+            element.classList.add('falling-item');
+            
+            element.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            element.style.left = Math.random() * 100 + 'vw';
+            
+            const size = Math.random() * 2 + 1.5; 
+            element.style.fontSize = size + 'rem';
+            
+            const duration = Math.random() * 3 + 4; 
+            element.style.animation = `fall ${duration}s linear forwards`;
+            
+            document.body.appendChild(element);
+
+            setTimeout(() => {
+                element.remove();
+            }, duration * 1000);
+        }
+    </script>
+</body>
+</html>
