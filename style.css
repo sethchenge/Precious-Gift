@@ -262,33 +262,24 @@ h1.main-header {
 /* --- MOBILE OPTIMIZATION --- */
 @media screen and (max-width: 900px) {
     
-    /* 1. CRITICAL FIX: Disable vertical centering so top isn't cut off */
+    /* 1. Stop centering vertically. Align to top instead. */
     #main-content {
-        align-items: flex-start; /* Starts from top, not center */
-        justify-content: flex-start;
-        padding-top: 0;
-        height: auto; /* Allow it to grow */
-        overflow-y: auto; /* Enable scrolling */
+        align-items: flex-start; 
+        padding-top: 20px;
     }
 
-    /* 2. Push the content down nicely */
+    /* 2. Adjust wrapper to stack vertically */
     .content-wrapper {
         flex-direction: column;
         justify-content: flex-start;
-        
-        /* This 120px ensures the image is fully visible + looks premium */
-        padding-top: 120px; 
-        
-        /* Space at the bottom for scrolling */
-        padding-bottom: 150px; 
-        height: auto; 
+        padding-top: 70px; /* Reduced from 250px because we are now aligned to top */
+        padding-bottom: 100px; /* Extra space at bottom for scrolling */
+        height: auto; /* Let it grow as tall as needed */
     }
     
-    /* 3. Add explicit breathing room for the photo section */
     .photo-section {
-        margin-bottom: 30px;
-        /* Ensures the photo doesn't touch the very top edge if wrapper padding isn't enough */
-        margin-top: 20px; 
+        margin-bottom: 20px;
+        margin-top: 20px; /* Adds a little breathing room for the image */
     }
 
     .photo-container {
@@ -298,7 +289,7 @@ h1.main-header {
 
     h1.main-header {
         font-size: 2.2rem;
-        margin-top: 15px;
+        margin-top: 10px;
     }
 
     .cards-section {
@@ -312,14 +303,5 @@ h1.main-header {
     
     .content-wrapper.active .love-card {
         transform: translateY(0);
-    }
-    
-    /* Move heating text to top right on mobile */
-    .heating-text {
-        top: 20px;
-        right: 20px;
-        transform: none !important;
-        font-size: 1.5rem;
-        writing-mode: horizontal-tb;
     }
 }
