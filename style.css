@@ -272,7 +272,7 @@ h1.main-header {
     .content-wrapper {
         flex-direction: column;
         justify-content: flex-start;
-        padding-top: 40px; /* Reduced from 250px because we are now aligned to top */
+        padding-top: 70px; /* Reduced from 250px because we are now aligned to top */
         padding-bottom: 100px; /* Extra space at bottom for scrolling */
         height: auto; /* Let it grow as tall as needed */
     }
